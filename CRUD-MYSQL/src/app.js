@@ -14,8 +14,12 @@ app.set('views', path.join(__dirname, 'views'));
 //middlewars
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
-    host:'localhost'
-}))
+    host:'localhost',
+    user: 'root',
+    password: 'salva2013',
+    port:3306,
+    database: 'stres-km'
+}, 'single'));
 
 //routes
 
