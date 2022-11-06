@@ -6,11 +6,24 @@
 
         </div>
         <div class="col-md-5">
-            <form action="/add" method="post">
-                <div class="form-group">
-                    <input type="text" name="idActivo" placeholder="IdActivo" class="form-control">
-                </div>
-            </form>
+          <div class="card">
+            <div class="card-body">
+                <form action="/add" method="post">
+                    <div class="form-group">
+                        <input type="text" name="idDefinicion" placeholder="IdDefinicion" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="idTipoActivo" placeholder="IdTipoActivo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="descripcion" placeholder="Descripcion" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Save Activo
+                    </button>
+                </form>
+            </div>
+          </div>
         </div>
     </div>
 </div>
