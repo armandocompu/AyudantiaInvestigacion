@@ -7,6 +7,7 @@ const app = express();
 
 //importando rutas
 const activosRoutes = require('./routes/activos');
+const { urlencoded } = require('express');
 
 // settings
 app.set('port', process.env.PORT || 3000);
@@ -24,6 +25,8 @@ app.use(myConnection(mysql, {
     database: 'stres-km'
 }, 'single'));
 
+app.use(express.urlencoded({extended: false}));
+ 
 //routes
 app.use('/', activosRoutes);
 
