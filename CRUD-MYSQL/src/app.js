@@ -8,6 +8,7 @@ const app = express();
 
 //importando rutas
 const activosRoutes = require('./routes/activos');
+const conceptosRoutes=require('./routes/conceptos');
 //const { urlencoded } = require('express');
 
 // settings
@@ -30,6 +31,7 @@ app.use(express.urlencoded({extended: false}));
  
 //routes
 app.use('/', activosRoutes);
+app.use('/',conceptosRoutes);
 
 //static files
 app.use(express.static(path.join(__dirname, 'public')));
