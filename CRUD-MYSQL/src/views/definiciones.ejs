@@ -7,10 +7,10 @@
             <tr>
               <td>nº</td>
               <td>id</td>
-              <td>fuente</td>
-              <td>origen</td>
-              <td>tipo</td>
-              <td>url</td>
+              <td>id_fuente</td>
+              <td>id_concepto</td>
+              <td>definicion</td>
+              <td>fecha</td>
               <td>Actions</td>
             </tr>
           </thead>
@@ -20,13 +20,13 @@
                 <tr>
                   <td><%= (i + 1) %></td>
                   <td><%= data[i].id %></td>
-                  <td><%= data[i].fuente %></td>
-                  <td><%= data[i].origen %></td>
-                  <td><%= data[i].tipo %></td>
-                  <td><%= data[i].url %></td>
+                  <td><%= data[i].id_fuente %></td>
+                  <td><%= data[i].id_concepto %></td>
+                  <td><%= data[i].definicion %></td>
+                  <td><%= data[i].fecha %></td>
                   <td>
-                    <a href="fuentes/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
-                    <a href="fuentes/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                    <a href="/definiciones/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
+                    <a href="/definiciones/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
                   </td>
                 </tr>
               <% } %>
@@ -37,21 +37,21 @@
       <div class="col-md-5">
         <div class="card-body">
   
-          <form action="fuentes/add" method="POST">
+          <form action="/definiciones/add" method="POST">
             <div class="form-group">
-              <input type="text" name="fuente" placeholder="Fuente" class="form-control" autofocus>
+              <input type="text" name="id_fuente" placeholder="IdFuente" class="form-control" autofocus>
             </div>
             <div class="form-group">
-              <input type="text" name="origen" placeholder="Origen" class="form-control">
+              <input type="text" name="id_concepto" placeholder="IdConcepto" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" name="tipo" placeholder="Tipo" class="form-control">
+              <input type="text" name="definicion" placeholder="Definicion" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" name="url" placeholder="Url" class="form-control">
+              <input type="text" name="fecha" placeholder="Fecha" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">
-              save Fuente
+              save Definicion
             </button>
           </form>
         </div>

@@ -3,6 +3,7 @@ const router2 = require('express').Router();
 const conceptosController = require('../controllers/conceptosController');
 const activosController = require('../controllers/activosController');
 const fuentesController = require('../controllers/fuentesController');
+const definicionesController=require('../controllers/definicionesController');
 
 router2.get('/', conceptosController.list);
 router2.post('/add', conceptosController.save);
@@ -21,5 +22,11 @@ router2.post('/fuentes/add', fuentesController.save);
 router2.get('/fuentes/update/:id', fuentesController.edit);
 router2.post('/fuentes/update/:id', fuentesController.update);
 router2.get('/fuentes/delete/:id', fuentesController.delete);
+
+router2.get('/definiciones', definicionesController.list);
+router2.post('/definiciones/add', definicionesController.save);
+router2.get('/definiciones/update/:id', definicionesController.edit);
+router2.post('/definiciones/update/:id', definicionesController.update);
+router2.get('/definiciones/delete/:id', definicionesController.delete);
 
 module.exports = router2;

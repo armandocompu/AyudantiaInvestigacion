@@ -6,6 +6,7 @@
           <thead>
             <tr>
               <td>n°</td>
+              <td>id</td>
               <td>Concepto</td>
               <td>Indicador</td>
               <td>Actions</td>
@@ -16,6 +17,7 @@
               <% for(var i = 0; i < data.length; i++) { %>
                 <tr>
                   <td><%= (i + 1) %></td>
+                  <td><%= data[i].id %></td>
                   <td><%= data[i].concepto %></td>
                   <td><%= data[i].indicador %></td>
                   <td>
