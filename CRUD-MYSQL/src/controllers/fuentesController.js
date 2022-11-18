@@ -2,12 +2,12 @@ const controller3 = {};
 
 controller3.list = (req, res) => {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM activos', (err, activo) => {
+    conn.query('SELECT * FROM fuentes', (err, fuente) => {
      if (err) {
       res.json(err);
      }
-     res.render('activos', {
-        data: activo
+     res.render('fuentes', {
+        data: fuente
      });
     });
   });
@@ -17,10 +17,10 @@ controller3.save = (req, res) => {
   const data = req.body;
   console.log(req.body)
   req.getConnection((err, connection) => {
-    const query = connection.query('INSERT INTO activos set ?', data, (err, concept) => {
+    const query = connection.query('INSERT INTO fuentes set ?', data, (err, concept) => {
       console.log(concept)
       //res.send('works')
-      res.redirect('/activos')
+      res.redirect('/fuentes')
     })
   })
 };
@@ -28,8 +28,8 @@ controller3.save = (req, res) => {
 controller3.edit = (req, res) => {
   const { id } = req.params;
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM activos WHERE id = ?", [id], (err, rows) => {
-      res.render('activosEdit', {
+    conn.query("SELECT * FROM fuentes WHERE id = ?", [id], (err, rows) => {
+      res.render('fuentesEdit', {
         data: rows[0]
       })
     });
@@ -38,11 +38,11 @@ controller3.edit = (req, res) => {
 
 controller3.update = (req, res) => {
   const { id } = req.params;
-  const newActivo = req.body;
+  const newFuente = req.body;
   req.getConnection((err, conn) => {
 
-  conn.query('UPDATE activos set ? where id = ?', [newActivo, id], (err, rows) => {
-    res.redirect('/activos');
+  conn.query('UPDATE fuentes set ? where id = ?', [newFuente, id], (err, rows) => {
+    res.redirect('/fuentes');
   });
   });
 };
@@ -50,8 +50,8 @@ controller3.update = (req, res) => {
 controller3.delete = (req, res) => {
   const { id } = req.params;
   req.getConnection((err, connection) => {
-    connection.query('DELETE FROM activos WHERE id = ?', [id], (err, rows) => {
-      res.redirect('/activos');
+    connection.query('DELETE FROM fuentes WHERE id = ?', [id], (err, rows) => {
+      res.redirect('/fuentes');
     });
   });
 }

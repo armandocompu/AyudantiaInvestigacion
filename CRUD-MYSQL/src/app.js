@@ -7,8 +7,9 @@ const express = require('express'),
 const app = express();
 
 //importando rutas
-const activosRoutes = require('./routes/activos');
+//const activosRoutes=require('./routes/activos');
 const conceptosRoutes=require('./routes/conceptos');
+//const fuentesRoutes=require('./routes/fuentes');
 //const { urlencoded } = require('express');
 
 // settings
@@ -30,7 +31,8 @@ app.use(myConnection(mysql, {
 app.use(express.urlencoded({extended: false}));
  
 //routes
-app.use('/', activosRoutes);
+//app.use('/activos', activosRoutes);
+//app.use('/fuentes', conceptosRoutes);
 app.use('/',conceptosRoutes);
 
 //static files

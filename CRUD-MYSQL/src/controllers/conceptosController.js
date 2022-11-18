@@ -19,7 +19,7 @@ controller2.save = (req, res) => {
   req.getConnection((err, connection) => {
     const query = connection.query('INSERT INTO conceptos set ?', data, (err, concept) => {
       console.log(concept)
-      res.send('works')
+      //res.send('works')
       res.redirect('/')
     })
   })
@@ -41,7 +41,7 @@ controller2.update = (req, res) => {
   const newConcepto = req.body;
   req.getConnection((err, conn) => {
 
-  conn.query('UPDATE activos set ? where id = ?', [newConcepto, id], (err, rows) => {
+  conn.query('UPDATE conceptos set ? where id = ?', [newConcepto, id], (err, rows) => {
     res.redirect('/');
   });
   });
