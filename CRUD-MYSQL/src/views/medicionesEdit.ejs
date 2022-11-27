@@ -1,0 +1,31 @@
+<%- include ('partials/_header') %>
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+          <form action="mediciones/update/<%= data.id %>" method="POST">
+            <div class="form-group">
+              <input type="text" name="id_indicador" value="<%= data.id_indicador%>" placeholder="Id_indicador" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="id_periodo" value="<%= data.id_periodo%>" placeholder="Id_periodo" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="valor" value="<%= data.valor%>" placeholder="Valor" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="valortexto" value="<%= data.valortexto%>" placeholder="Valortexto" class="form-control">
+            </div>
+  
+            <button type="submit" class="btn btn-primary">
+              save medicion
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<%- include ('partials/_footer') %>

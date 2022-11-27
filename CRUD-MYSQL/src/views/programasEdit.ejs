@@ -1,0 +1,21 @@
+<%- include ('partials/_header') %>
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+          <form action="programas/update/<%= data.id %>" method="POST">
+            <div class="form-group">
+              <input type="text" name="programa" value="<%= data.programa%>" placeholder="Periodo" class="form-control" autofocus>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              save programa
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<%- include ('partials/_footer') %>
