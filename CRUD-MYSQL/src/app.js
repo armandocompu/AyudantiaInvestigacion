@@ -10,6 +10,13 @@ const app = express();
 const activosRoutes=require('./routes/activos');
 const conceptosRoutes=require('./routes/conceptos');
 const fuentesRoutes=require('./routes/fuentes');
+const definicionesRoutes=require('./routes/definiciones');
+const indicadoresRoutes=require('./routes/indicadores');
+const medicionesRoutes=require('./routes/mediciones');
+const periodoRoutes=require('./routes/periodo');
+const programaRoutes=require('./routes/programa');
+const sinonimosRoutes=require('./routes/sinonimos');
+const tipoactivoRoutes=require('./routes/tipoactivo');
 //const { urlencoded } = require('express');
 
 // settings
@@ -31,10 +38,17 @@ app.use(myConnection(mysql, {
 app.use(express.urlencoded({extended: false}));
  
 //routes
-app.use('/activos',activosRoutes);
-app.use('/fuentes',conceptosRoutes);
-
 app.use('/',conceptosRoutes);
+app.use('/activos',activosRoutes);
+app.use('/fuentes',fuentesRoutes);
+app.use('/definiciones',definicionesRoutes);
+app.use('/indicadores',indicadoresRoutes);
+app.use('/mediciones',medicionesRoutes);
+app.use('/periodo',periodoRoutes);
+app.use('/programa',programaRoutes);
+app.use('/sinonimos',sinonimosRoutes);
+app.use('/tipoactivo',tipoactivoRoutes);
+
 
 //static files
 app.use(express.static(path.join(__dirname, 'public')));

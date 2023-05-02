@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const activosController = require('../controllers/activosController');
-console.log("hola estoy en activos");
+
 
 router.get('/', activosController.list);
 router.post('/add', activosController.save);
