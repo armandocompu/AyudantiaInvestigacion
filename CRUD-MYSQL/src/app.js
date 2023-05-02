@@ -44,10 +44,10 @@ app.use('/fuentes',fuentesRoutes);
 app.use('/definiciones',definicionesRoutes);
 app.use('/indicadores',indicadoresRoutes);
 app.use('/mediciones',medicionesRoutes);
-app.use('/periodo',periodoRoutes);
-app.use('/programa',programaRoutes);
+app.use('/periodosescolares',periodoRoutes);
+app.use('/programas',programaRoutes);
 app.use('/sinonimos',sinonimosRoutes);
-app.use('/tipoactivo',tipoactivoRoutes);
+app.use('/tiposactivo',tipoactivoRoutes);
 
 
 //static files
