@@ -25,6 +25,26 @@ controller2.save = (req, res) => {
   })
 };
 
+controller2.list = (req, res) => {
+  const concepto = req.query.concepto; // Obtén el valor del concepto desde la consulta
+  req.getConnection((err, conn) => {
+    if (err) {
+      res.json(err);
+    } else {
+      const query = 'SELECT * FROM conceptos WHERE concepto = ?';
+      conn.query(query, [concepto],(err, conceptos) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.render('conceptosView', {
+            data: conceptos
+          });
+        }
+      });
+    }
+  });
+};
+
 controller2.edit = (req, res) => {
   const { id } = req.params;
   req.getConnection((err, conn) => {
