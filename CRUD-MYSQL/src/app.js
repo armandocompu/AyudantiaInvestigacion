@@ -10,6 +10,14 @@ const app = express();
 const activosRoutes=require('./routes/activos');
 const conceptosRoutes=require('./routes/conceptos');
 const fuentesRoutes=require('./routes/fuentes');
+const definicionesRoutes=require('./routes/definiciones');
+const medicionesRoutes=require('./routes/mediciones');
+const periodoRoutes=require('./routes/periodo');
+const programaRoutes=require('./routes/programa');
+const sinonimoRoutes=require('./routes/sinonimo');
+const tipoActivoRoutes=require('./routes/tipoactivo');
+const indicadoresRoutes=require('./routes/indicadores');
+
 //const { urlencoded } = require('express');
 
 // settings
@@ -32,8 +40,14 @@ app.use(express.urlencoded({extended: false}));
  
 //routes
 app.use('/activos',activosRoutes);
-app.use('/fuentes',conceptosRoutes);
-
+app.use('/fuentes',fuentesRoutes);
+app.use('/definiciones',definicionesRoutes);
+app.use('/indicadores',indicadoresRoutes);
+app.use('/mediciones',medicionesRoutes);
+app.use('/periodosescolares',periodoRoutes);
+app.use('/programas',programaRoutes);
+app.use('/sinonimos',sinonimoRoutes);
+app.use('/tiposactivo',tipoActivoRoutes);
 app.use('/',conceptosRoutes);
 
 //static files
