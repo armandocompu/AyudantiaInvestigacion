@@ -13,6 +13,28 @@ controller5.list = (req, res) => {
   });
 };
 
+controller5.search = (req, res) => {
+  const searchQuery = req.query.search; // Obtain the search query from the query string
+  req.getConnection((err, conn) => {
+    if (err) {
+      res.json(err);
+    } else {
+      const query = 'SELECT * FROM mediciones WHERE valortexto LIKE ?';
+      const searchParam = `%${searchQuery}%`;
+
+      conn.query(query, [searchParam], (err, mediciones) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.render('mediciones', {
+            data: mediciones
+          });
+        }
+      });
+    }
+  });
+};
+
 controller5.save = (req, res) => {
   const data = req.body;
   console.log(req.body)

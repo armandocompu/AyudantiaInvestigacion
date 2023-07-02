@@ -13,6 +13,30 @@ controller5.list = (req, res) => {
   });
 };
 
+
+controller5.search = (req, res) => {
+  const searchQuery = req.query.search; // Obtain the search query from the query string
+  req.getConnection((err, conn) => {
+    if (err) {
+      res.json(err);
+    } else {
+      const query = 'SELECT * FROM programas WHERE programa LIKE ?';
+      const searchParam = `%${searchQuery}%`;
+
+      conn.query(query, [searchParam], (err, programas) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.render('programas', {
+            data: programas
+          });
+        }
+      });
+    }
+  });
+};
+
+
 controller5.save = (req, res) => {
   const data = req.body;
   console.log(req.body)

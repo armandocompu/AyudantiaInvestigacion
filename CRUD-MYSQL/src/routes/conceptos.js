@@ -1,6 +1,7 @@
 const router2 = require('express').Router();
 
 const conceptosController = require('../controllers/conceptosController');
+
 // const activosController = require('../controllers/activosController');
 // const fuentesController = require('../controllers/fuentesController');
 // const definicionesController=require('../controllers/definicionesController');
@@ -12,6 +13,9 @@ const conceptosController = require('../controllers/conceptosController');
 // const tiposactivoController=require('../controllers/tipoactivoController');
 
 router2.get('/', conceptosController.list);
+// Assuming you're using Express.js
+router2.get('/concepto/search', conceptosController.search);
+
 router2.post('/add', conceptosController.save);
 router2.get('/update/:id', conceptosController.edit);
 router2.post('/update/:id', conceptosController.update);

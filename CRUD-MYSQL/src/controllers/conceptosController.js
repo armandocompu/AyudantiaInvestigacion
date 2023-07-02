@@ -25,14 +25,16 @@ controller2.save = (req, res) => {
   })
 };
 
-controller2.list = (req, res) => {
-  const concepto = req.query.concepto; // Obtén el valor del concepto desde la consulta
+controller2.search = (req, res) => {
+  const searchQuery = req.query.search; // Obtain the search query from the query string
   req.getConnection((err, conn) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM conceptos WHERE concepto = ?';
-      conn.query(query, [concepto],(err, conceptos) => {
+      const query = 'SELECT * FROM conceptos WHERE concepto LIKE ?';
+      const searchParam = `%${searchQuery}%`;
+
+      conn.query(query, [searchParam], (err, conceptos) => {
         if (err) {
           res.json(err);
         } else {
@@ -44,6 +46,8 @@ controller2.list = (req, res) => {
     }
   });
 };
+
+
 
 controller2.edit = (req, res) => {
   const { id } = req.params;

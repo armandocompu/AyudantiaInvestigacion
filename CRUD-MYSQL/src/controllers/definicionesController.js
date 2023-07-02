@@ -13,6 +13,30 @@ controller4.list = (req, res) => {
   });
 };
 
+
+controller4.search = (req, res) => {
+  const searchQuery = req.query.search; // Obtain the search query from the query string
+  req.getConnection((err, conn) => {
+    if (err) {
+      res.json(err);
+    } else {
+      const query = 'SELECT * FROM definiciones WHERE definicion LIKE ?';
+      const searchParam = `%${searchQuery}%`;
+
+      conn.query(query, [searchParam], (err, definiciones) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.render('definiciones', {
+            data: definiciones
+          });
+        }
+      });
+    }
+  });
+};
+
+
 controller4.save = (req, res) => {
   const data = req.body;
   console.log(req.body)

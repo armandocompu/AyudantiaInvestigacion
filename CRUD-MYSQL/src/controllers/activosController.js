@@ -13,6 +13,29 @@ controller3.list = (req, res) => {
   });
 };
 
+controller3.search = (req, res) => {
+  const searchQuery = req.query.search; // Obtain the search query from the query string
+  req.getConnection((err, conn) => {
+    if (err) {
+      res.json(err);
+    } else {
+      const query = 'SELECT * FROM activos WHERE descripcion LIKE ?';
+      const searchParam = `%${searchQuery}%`;
+
+      conn.query(query, [searchParam], (err, activos) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.render('activos', {
+            data: activos
+          });
+        }
+      });
+    }
+  });
+};
+
+
 controller3.save = (req, res) => {
   const data = req.body;
   console.log(req.body)

@@ -13,6 +13,29 @@ controller3.list = (req, res) => {
   });
 };
 
+
+controller3.search = (req, res) => {
+  const searchQuery = req.query.search; // Obtain the search query from the query string
+  req.getConnection((err, conn) => {
+    if (err) {
+      res.json(err);
+    } else {
+      const query = 'SELECT * FROM fuentes WHERE fuente LIKE ?';
+      const searchParam = `%${searchQuery}%`;
+
+      conn.query(query, [searchParam], (err, fuentes) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.render('fuentes', {
+            data: fuentes
+          });
+        }
+      });
+    }
+  });
+};
+
 controller3.save = (req, res) => {
   const data = req.body;
   console.log(req.body)
