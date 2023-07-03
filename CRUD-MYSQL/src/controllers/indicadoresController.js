@@ -19,10 +19,11 @@ controller5.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM indicadores WHERE indicador LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda = `%${searchQuery}%`;
+      const query = "SELECT * FROM indicadores WHERE (tipo LIKE '"+busqueda+"') OR (unidad LIKE '"+busqueda+"')";
+      
 
-      conn.query(query, [searchParam], (err, indicadores) => {
+      conn.query(query, (err, indicadores) => {
         if (err) {
           res.json(err);
         } else {

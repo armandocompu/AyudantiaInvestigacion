@@ -19,10 +19,11 @@ controller5.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM periodosescolares WHERE periodo LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda = `%${searchQuery}%`;
+      const query = "SELECT * FROM periodosescolares WHERE (periodo LIKE '"+busqueda+"') OR (ciclo LIKE '"+busqueda+"') OR (nombreperiodo LIKE '"+busqueda+"')";
+      
 
-      conn.query(query, [searchParam], (err, periodos) => {
+      conn.query(query, (err, periodos) => {
         if (err) {
           res.json(err);
         } else {

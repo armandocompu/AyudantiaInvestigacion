@@ -19,10 +19,11 @@ controller5.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM mediciones WHERE valortexto LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda = `%${searchQuery}%`;
+      const query = "SELECT * FROM mediciones WHERE (valor LIKE '"+busqueda+"') OR (valortexto LIKE '"+busqueda+"')";
+      
 
-      conn.query(query, [searchParam], (err, mediciones) => {
+      conn.query(query, (err, mediciones) => {
         if (err) {
           res.json(err);
         } else {

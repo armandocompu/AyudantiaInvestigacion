@@ -19,10 +19,10 @@ controller5.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM tiposactivo WHERE descripcion LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda = `%${searchQuery}%`;
+      const query = "SELECT * FROM tiposactivo WHERE (tipo LIKE '"+busqueda+"') OR (descripcion LIKE '"+busqueda+"')";
 
-      conn.query(query, [searchParam], (err, tiposactivo) => {
+      conn.query(query, (err, tiposactivo) => {
         if (err) {
           res.json(err);
         } else {

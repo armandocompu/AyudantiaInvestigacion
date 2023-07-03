@@ -31,10 +31,12 @@ controller2.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM conceptos WHERE concepto LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda=`%${searchQuery}%`;
+      const query = "SELECT * FROM conceptos WHERE (concepto LIKE '"+busqueda+"') OR (indicador LIKE '"+busqueda+"')";
 
-      conn.query(query, [searchParam], (err, conceptos) => {
+      //const searchParam = "(concepto LIKE "+`%${searchQuery}%`+") OR (definicion LIKE "+`%${searchQuery}%`+")";
+
+      conn.query(query, (err, conceptos) => {
         if (err) {
           res.json(err);
         } else {

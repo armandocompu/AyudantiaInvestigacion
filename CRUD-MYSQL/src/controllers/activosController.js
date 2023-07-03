@@ -19,10 +19,10 @@ controller3.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM activos WHERE descripcion LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda=`%${searchQuery}%`;
+      const query = "SELECT * FROM activos WHERE (descripcion LIKE '"+busqueda+"') OR (url LIKE '"+busqueda+"')";
 
-      conn.query(query, [searchParam], (err, activos) => {
+      conn.query(query, (err, activos) => {
         if (err) {
           res.json(err);
         } else {

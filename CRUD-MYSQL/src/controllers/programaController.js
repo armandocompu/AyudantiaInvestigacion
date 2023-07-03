@@ -20,10 +20,11 @@ controller5.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM programas WHERE programa LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda = `%${searchQuery}%`;
+      const query = "SELECT * FROM definiciones WHERE (programa LIKE '"+busqueda+"')";
+      
 
-      conn.query(query, [searchParam], (err, programas) => {
+      conn.query(query, (err, programas) => {
         if (err) {
           res.json(err);
         } else {

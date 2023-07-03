@@ -19,10 +19,10 @@ controller5.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM sinonimos WHERE sinonimo LIKE ?';
-      const searchParam = `%${searchQuery}%`;
-
-      conn.query(query, [searchParam], (err, sinonimos) => {
+      const busqueda = `%${searchQuery}%`;
+      const query = "SELECT * FROM sinonimos WHERE (sinonimo LIKE '"+busqueda+"') OR (observacion LIKE '"+busqueda+"')";
+     
+      conn.query(query, (err, sinonimos) => {
         if (err) {
           res.json(err);
         } else {

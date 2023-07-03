@@ -20,10 +20,11 @@ controller4.search = (req, res) => {
     if (err) {
       res.json(err);
     } else {
-      const query = 'SELECT * FROM definiciones WHERE definicion LIKE ?';
-      const searchParam = `%${searchQuery}%`;
+      const busqueda = `%${searchQuery}%`;
+      const query = "SELECT * FROM definiciones WHERE (definicion LIKE '"+busqueda+"') OR (fecha LIKE '"+busqueda+"')";
+      
 
-      conn.query(query, [searchParam], (err, definiciones) => {
+      conn.query(query, (err, definiciones) => {
         if (err) {
           res.json(err);
         } else {
